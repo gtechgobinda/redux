@@ -14,7 +14,6 @@ const App = () => {
           <Route path="/edit/:id" element={<Update />} />
         </Routes>
       </BrowserRouter>
-      {/* <Home /> */}
     </>
   );
 };
