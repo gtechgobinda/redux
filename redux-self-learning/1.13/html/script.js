@@ -2,9 +2,8 @@
 const incrementEl = document.getElementById("increment");
 const decrementEl = document.getElementById("decrement");
 const counterEl = document.getElementById("counter");
-const addAnotherEl=document.getElementById("addAnother");
-const allMatchesContainer=document.getElementById("all-matches-container");
-
+const addAnotherEl = document.getElementById("addAnother");
+const allMatchesContainer = document.getElementById("all-matches-container");
 
 // action identifiers
 const INCREMENT = "increment";
@@ -72,6 +71,7 @@ incrementEl.addEventListener("keydown", function (event) {
     store.dispatch(increment(incrementValue));
     incrementEl.value = "";
   }
+  event.stopPropagation();
 });
 decrementEl.addEventListener("keydown", function (event) {
   if (event.keyCode === 13) {
@@ -80,4 +80,39 @@ decrementEl.addEventListener("keydown", function (event) {
     store.dispatch(decrement(decrementValue));
     decrementEl.value = "";
   }
+  event.stopPropagation();
 });
+
+let matchCount = 1;
+
+addAnotherEl.addEventListener("click", function () {
+  const newMatch = document.createElement("div");
+  newMatch.classList.add("match");
+
+  newMatch.innerHTML = `
+  <div class="wrapper">
+  <button class="lws-delete">
+      <img src="./image/delete.svg" alt="" />
+  </button>
+  <h3 class="lws-matchName">Match 1</h3>
+</div>
+<div class="inc-dec">
+  <form class="incrementForm">
+      <h4>Increment</h4>
+      <input type="number" name="increment" class="lws-increment" id="increment" />
+  </form>
+  <form class="decrementForm">
+      <h4>Decrement</h4>
+      <input type="number" name="decrement" class="lws-decrement" id="decrement" />
+  </form>
+</div>
+<div class="numbers">
+  <h2 class="lws-singleResult" id="counter">120</h2>
+</div>
+  `;
+
+  allMatchesContainer.appendChild(newMatch);
+  matchCount++;
+});
+
+
