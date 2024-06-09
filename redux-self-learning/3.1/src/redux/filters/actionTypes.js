@@ -1,2 +1,3 @@
-export const STATUSCHANGED="todos/statusChanged";
+export const STATUSCHANGED="filters/statusChanged";
+export const COLORCHANGED="filters/colorChanged";
 // export const 
